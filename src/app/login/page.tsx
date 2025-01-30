@@ -1,36 +1,40 @@
+import { signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import LoginClient from "@/components/ui/LoginClient";
 import Link from "next/link";
+import getSession from "../action";
+import { redirect } from "next/navigation";
 
-function Page() {
+async function Page() {
+  const user = await getSession();
+  if (user) redirect("/");
+
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <Card className="w-[30vw]">
+    <div className="w-full h-[100dvh] flex justify-center items-center px-3">
+      <Card className="w-full md:w-[50%] lg:w-[30%]">
         <CardHeader>
           <CardTitle>Login</CardTitle>
         </CardHeader>
         <CardContent>
-          <form className="flex flex-col gap-3">
-            <Input type="email" name="email" placeholder="email" required />
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              required
-            />
-            <Button>Let's get started</Button>
-          </form>
-          <form className="flex flex-col gap-2 mt-2 text-center">
+          <LoginClient />
+          <form
+            action={async () => {
+              "use server";
+              await signIn("google");
+            }}
+            className="flex flex-col gap-2 mt-2 text-center"
+          >
             <p>or</p>
-            <Button variant={"outline"}>Continue with Google</Button>
+            <Button type="submit" variant={"outline"}>
+              Continue with Google
+            </Button>
           </form>
         </CardContent>
         <CardFooter>

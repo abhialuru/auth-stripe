@@ -1,3 +1,5 @@
+import { signIn } from "@/auth";
+import SignupClient from "@/components/SignupClient";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,31 +8,32 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import getSession from "../action";
 
-function Page() {
+async function Page() {
+  const user = await getSession();
+  if (user) redirect("/");
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      <Card className="w-[30vw]">
+      <Card className="w-full px-3 md:w-[50%] lg:w-[30%]">
         <CardHeader>
           <CardTitle>Sign up</CardTitle>
         </CardHeader>
         <CardContent>
-          <form className="flex flex-col gap-3">
-            <Input type="name" name="name" placeholder="name" required />
-            <Input type="email" name="email" placeholder="email" required />
-            <Input
-              type="password"
-              name="password"
-              placeholder="password"
-              required
-            />
-            <Button>Let's get started</Button>
-          </form>
-          <form className="flex flex-col gap-2 mt-2 text-center">
+          <SignupClient />
+          <form
+            action={async () => {
+              "use server";
+              await signIn("google");
+            }}
+            className="flex flex-col gap-2 mt-2 text-center"
+          >
             <p>or</p>
-            <Button variant={"outline"}>Continue with Google</Button>
+            <Button type="submit" variant={"outline"}>
+              Continue with Google
+            </Button>
           </form>
         </CardContent>
         <CardFooter>
