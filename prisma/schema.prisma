@@ -18,14 +18,6 @@ model User {
   name String
   password String?
   googleId String?
+  emailVerify DateTime?
 }
-
-model PaymentDetails {
-  id String @id @default(cuid())
-  email String
-  currency String
-  amount String
-  paymentInfo String
-  data String 
-  time String
-}
+ 

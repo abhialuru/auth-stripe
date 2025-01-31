@@ -23,22 +23,23 @@ async function register(formData: FormData) {
 
   const existingUser = await db.user.findUnique({
     where: {
-      email,
+      email: email,
     },
   });
 
   if (existingUser) {
     return new Error("User already exists");
-  } else {
-    const hashPassword = await hash(password, 10);
-    await db.user.create({
-      data: {
-        email: email,
-        name: name,
-        password: hashPassword,
-      },
-    });
   }
+
+  const hashPassword = await hash(password, 10);
+
+  await db.user.create({
+    data: {
+      email: email,
+      name: name,
+      password: hashPassword,
+    },
+  });
 }
 
 export { login, register };

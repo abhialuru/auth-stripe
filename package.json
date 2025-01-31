@@ -12,6 +12,7 @@
   "dependencies": {
     "@prisma/client": "^6.3.0",
     "@radix-ui/react-slot": "^1.1.1",
+    "@react-email/components": "^0.0.32",
     "@types/bcryptjs": "^2.4.6",
     "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.1",
@@ -23,11 +24,13 @@
     "prisma": "^6.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "resend": "^4.1.1",
     "shadcn": "^2.3.0",
     "sonner": "^1.7.3",
     "stripe": "^17.6.0",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

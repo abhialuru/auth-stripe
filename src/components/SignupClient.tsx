@@ -14,10 +14,9 @@ function SignupClient() {
         const toastId = toast.loading("Signing up!. Please wait!");
 
         const check = await register(formData);
-        console.log("boolean :", check);
 
         if (!check) {
-          toast.success("signup successful!. Login now", {
+          toast.success("Email verification was sent.", {
             id: toastId,
           });
           router.push("/login");
@@ -29,9 +28,21 @@ function SignupClient() {
       }}
       className="flex flex-col gap-3"
     >
-      <Input type="name" name="name" placeholder="name" required />
+      <Input
+        type="name"
+        name="name"
+        placeholder="name"
+        minLength={3}
+        required
+      />
       <Input type="email" name="email" placeholder="email" required />
-      <Input type="password" name="password" placeholder="password" required />
+      <Input
+        type="password"
+        name="password"
+        placeholder="password"
+        minLength={4}
+        required
+      />
       <Button type="submit">Let's get started</Button>
     </form>
   );
