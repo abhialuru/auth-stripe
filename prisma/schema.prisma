@@ -19,3 +19,13 @@ model User {
   password String?
   googleId String?
 }
+
+model PaymentDetails {
+  id String @id @default(cuid())
+  email String
+  currency String
+  amount String
+  paymentInfo String
+  data String 
+  time String
+}

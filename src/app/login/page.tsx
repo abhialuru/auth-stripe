@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import LoginClient from "@/components/ui/LoginClient";
+import LoginClient from "@/components/LoginClient";
 import Link from "next/link";
 import getSession from "../action";
 import { redirect } from "next/navigation";

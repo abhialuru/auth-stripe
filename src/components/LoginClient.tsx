@@ -1,7 +1,7 @@
 "use client";
 import { login } from "@/app/actions/action";
-import { Input } from "./input";
-import { Button } from "./button";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
