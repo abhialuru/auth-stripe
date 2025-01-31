@@ -16,7 +16,7 @@ function SignupClient() {
         const check = await register(formData);
 
         if (!check) {
-          toast.success("Email verification was sent.", {
+          toast.success("Sign up Successful. Login Now.", {
             id: toastId,
           });
           router.push("/login");
