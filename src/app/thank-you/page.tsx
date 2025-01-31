@@ -1,37 +1,29 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import getSession from "../action";
+import { redirect } from "next/navigation";
 
-function Page() {
+async function Page() {
+  const user = await getSession();
+
+  if (!user) redirect("/");
+
   return (
-    <>
-      <div className="w-full flex flex-col md:grid grid-cols-2 my-auto">
-        <div className="w-full h-full flex flex-col gap-10 items-center justify-center">
-          <Image
-            className="size-44"
-            src="/thanks-meme.jpg"
-            alt="thank-you image"
-            height={100}
-            width={100}
-          />
-          <div className="text-center px-5 py-1 bg-zinc-100 mb-10">
-            <Link href="/">Home Page</Link>
-          </div>
-        </div>
-        <div className="flex h-full flex-col justify-between px-5">
-          <h1 className="max-w-xl text-5xl lg:text-7xl font-bold text-zinc-800">
-            THANK YOU FOR TRYING OUT!
-          </h1>
-          <div className="flex flex-col mt-10 text-sm font-semibold">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicin</p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicin ipsum dolor sit
-              amet.
-            </p>
-          </div>
-        </div>
+    <div className="w-full h-dvh flex justify-center items-center">
+      <div className="flex flex-col gap-5 text-center border border-gray-400 p-10 rounded-md bg-slate-50">
+        <h1 className="text-3xl font-bold text-green-500">
+          Payment Successfull!
+        </h1>
+        <h1 className="text-2xl text-gray-700 font-bold">
+          Thank you for trying it out.
+        </h1>
+        <Button variant={"link"}>
+          <Link href="/">Home Page</Link>
+        </Button>
       </div>
-    </>
+    </div>
   );
 }
 

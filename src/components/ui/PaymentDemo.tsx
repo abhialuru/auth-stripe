@@ -28,7 +28,7 @@ function PaymentDemo() {
     <div className="flex flex-col gap-5">
       <h4 className="font-semibold text-lg">Demo for Payment System</h4>
       <Button onClick={handlePayment} className="px-4 text-center">
-        Pay 50$
+        Pay 50₹
       </Button>
     </div>
   );
