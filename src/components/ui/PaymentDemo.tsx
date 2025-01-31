@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "./button";
-import Link from "next/link";
 
 function PaymentDemo() {
   const router = useRouter();

@@ -3,8 +3,6 @@ import { signIn } from "@/auth";
 import { db } from "@/db";
 import { hash } from "bcryptjs";
 import { CredentialsSignin } from "next-auth";
-import { redirect } from "next/navigation";
-import { toast } from "sonner";
 
 async function login(email: string, password: string) {
   try {

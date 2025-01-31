@@ -1,4 +1,3 @@
-import { db } from "@/db";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
